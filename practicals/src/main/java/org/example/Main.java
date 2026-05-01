@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.designPattern.creational.factory.ShapeFactoryService;
 import org.example.designPattern.creational.singleton.Logger;
 
 
@@ -12,5 +13,7 @@ public class Main {
             logger.log("test logging "+ i);
             System.out.println("i = " + i);
         }
+
+        ShapeFactoryService.printAreaOfShape("TRIANGLE");
     }
 }
