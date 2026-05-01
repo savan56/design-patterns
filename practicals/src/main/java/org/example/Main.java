@@ -1,7 +1,10 @@
 package org.example;
 
+import org.example.designPattern.creational.builder.HTTPRequest;
 import org.example.designPattern.creational.factory.ShapeFactoryService;
 import org.example.designPattern.creational.singleton.Logger;
+
+import java.util.HashMap;
 
 
 public class Main {
@@ -15,5 +18,12 @@ public class Main {
         }
 
         ShapeFactoryService.printAreaOfShape("TRIANGLE");
+
+        HTTPRequest request = new HTTPRequest.Builder("url","POST")
+                .setBody("body")
+                .setHeaders(new HashMap<>())
+                .setTimeout(10)
+                .build();
+        System.out.println(request.toString());
     }
 }
