@@ -3,6 +3,9 @@ package org.example;
 import org.example.designPattern.creational.builder.HTTPRequest;
 import org.example.designPattern.creational.factory.ShapeFactoryService;
 import org.example.designPattern.creational.singleton.Logger;
+import org.example.designPattern.structural.adapter.ExternalWeatherApi;
+import org.example.designPattern.structural.adapter.WeatherAdapter;
+import org.example.designPattern.structural.adapter.WeatherService;
 
 import java.util.HashMap;
 
@@ -25,5 +28,8 @@ public class Main {
                 .setTimeout(10)
                 .build();
         System.out.println(request.toString());
+
+        WeatherService weather = new WeatherAdapter(new ExternalWeatherApi());
+         System.out.println(weather.getTemperatureCelsius("NYC")); // → 25.0
     }
 }
