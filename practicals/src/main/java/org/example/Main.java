@@ -10,6 +10,7 @@ import org.example.designPattern.structural.decorator.CheezBurstDecorator;
 import org.example.designPattern.structural.decorator.CreatePizza;
 import org.example.designPattern.structural.decorator.OlivesDecorator;
 import org.example.designPattern.structural.decorator.Pizza;
+import org.example.designPattern.structural.facade.HotelReceptionFacade;
 
 import java.util.HashMap;
 
@@ -49,6 +50,11 @@ public class Main {
 
         Pizza olivChesezburst = new OlivesDecorator(new CheezBurstDecorator(new CreatePizza()));
         System.out.println(olivChesezburst.description() +" cost : "+ olivChesezburst.cost());
+
+        // Facade design pattern
+        HotelReceptionFacade receptionFacade = new HotelReceptionFacade();
+        receptionFacade.getLaundryDone();
+        receptionFacade.planMyEvening();
     }
 
 }
