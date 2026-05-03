@@ -11,6 +11,9 @@ import org.example.designPattern.structural.decorator.CreatePizza;
 import org.example.designPattern.structural.decorator.OlivesDecorator;
 import org.example.designPattern.structural.decorator.Pizza;
 import org.example.designPattern.structural.facade.HotelReceptionFacade;
+import org.example.designPattern.structural.proxy.UserAccountRepo;
+import org.example.designPattern.structural.proxy.UserAuthenticationProxy;
+import org.example.designPattern.structural.proxy.UserRepository;
 
 import java.util.HashMap;
 
@@ -55,6 +58,10 @@ public class Main {
         HotelReceptionFacade receptionFacade = new HotelReceptionFacade();
         receptionFacade.getLaundryDone();
         receptionFacade.planMyEvening();
+
+        //proxy design pattern
+        UserRepository repo = new UserAuthenticationProxy(new UserAccountRepo());
+        repo.getUserAccountByAccountNumber("123-456-789");  
     }
 
 }
