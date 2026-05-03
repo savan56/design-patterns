@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.designPattern.behavioral.strategy.*;
 import org.example.designPattern.creational.builder.HTTPRequest;
 import org.example.designPattern.creational.factory.ShapeFactoryService;
 import org.example.designPattern.creational.singleton.Logger;
@@ -61,7 +62,18 @@ public class Main {
 
         //proxy design pattern
         UserRepository repo = new UserAuthenticationProxy(new UserAccountRepo());
-        repo.getUserAccountByAccountNumber("123-456-789");  
+        repo.getUserAccountByAccountNumber("123-456-789");
+
+        // Strategy design pattern
+        DataProcessor processor = new DataProcessor(new BubbleSort());
+        processor.sortData(new int[]{4,3,6,7,1,2,5}, "Bubble Sort");
+
+        processor.changeStrategy(new InsertionSort());
+        processor.sortData(new int[]{4,3,6,7,1,2,5}, "Insertion Sort");
+
+        processor.changeStrategy(new QuickSort());
+        processor.sortData(new int[]{4,3,6,7,1,2,5}, "Quick Sort");
+
     }
 
 }
