@@ -1,5 +1,9 @@
 package org.example;
 
+import org.example.designPattern.behavioral.observer.AutoTrader;
+import org.example.designPattern.behavioral.observer.EmailTrader;
+import org.example.designPattern.behavioral.observer.MobileAppAlert;
+import org.example.designPattern.behavioral.observer.StockExchange;
 import org.example.designPattern.behavioral.strategy.*;
 import org.example.designPattern.creational.builder.HTTPRequest;
 import org.example.designPattern.creational.factory.ShapeFactoryService;
@@ -73,6 +77,15 @@ public class Main {
 
         processor.changeStrategy(new QuickSort());
         processor.sortData(new int[]{4,3,6,7,1,2,5}, "Quick Sort");
+
+        // observer design pattern
+        StockExchange exchange = new StockExchange();
+        exchange.subscribe(new EmailTrader());
+        exchange.subscribe(new MobileAppAlert());
+        exchange.subscribe(new AutoTrader());
+
+        exchange.updatePrice("APPL",150.0);
+        exchange.updatePrice("APPL",140.00);
 
     }
 
